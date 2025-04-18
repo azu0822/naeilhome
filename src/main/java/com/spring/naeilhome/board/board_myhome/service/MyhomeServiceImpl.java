@@ -45,12 +45,16 @@ public class MyhomeServiceImpl implements MyhomeService{
 	public String coverImageUpload(int newArticle, MultipartFile file) throws Exception {
 		 try {
 	    // 파일 저장 경로 설정
+<<<<<<< HEAD
 	    String uploadDir = null;
 	    if(System.getProperty("os.name").toLowerCase().contains("win")) {
 	    	uploadDir = "C:\\naeilhome\\board\\board_myhome\\coverImage\\" + newArticle;
 	    }else {
 	    	uploadDir = "/home/ubuntu/naeilhome-img/board/board_myhome/coverImage/" + newArticle;	    	
 	    }
+=======
+	    String uploadDir = "C:\\naeilhome\\board\\board_myhome\\coverImage\\" + newArticle;
+>>>>>>> 2eafbecfc2a83bfd92ac7d294cc658c427d9bf98
 	    File directory = new File(uploadDir);
 
 	    // 폴더가 존재하지 않으면 자동으로 생성

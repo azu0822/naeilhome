@@ -38,7 +38,11 @@ public class KakaoController {
 		StringBuffer loginUrl = new StringBuffer();
 		loginUrl.append("https://kauth.kakao.com/oauth/authorize?client_id=");
 		loginUrl.append(CLIENT_ID); // REST API 키
+<<<<<<< HEAD
 		loginUrl.append("&redirect_uri=http://localhost:8080/kakao/kakao_callback");
+=======
+		loginUrl.append("&redirect_uri=http://localhost:8098/kakao/kakao_callback");
+>>>>>>> 2eafbecfc2a83bfd92ac7d294cc658c427d9bf98
 		loginUrl.append("&response_type=code");
 		
 		return "redirect:"+loginUrl.toString();

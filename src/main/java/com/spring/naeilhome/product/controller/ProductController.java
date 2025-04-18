@@ -70,6 +70,7 @@ public class ProductController {
 			@RequestParam("image") String imageName, HttpServletRequest requ, HttpServletResponse resp)
 			throws Exception {
 
+<<<<<<< HEAD
 		String filePath = null;
 		if(System.getProperty("os.name").toLowerCase().contains("win")) {			
 			filePath = PRODUCT_IMAGE_SERVER + "\\" + articleNO + "\\" + imageName;
@@ -79,6 +80,11 @@ public class ProductController {
 		File image = new File(filePath);
 
 		OutputStream out = resp.getOutputStream();
+=======
+		OutputStream out = resp.getOutputStream();
+		String filePath = PRODUCT_IMAGE_SERVER + "\\" + articleNO + "\\" + imageName;
+		File image = new File(filePath);
+>>>>>>> 2eafbecfc2a83bfd92ac7d294cc658c427d9bf98
 
 		if (image.exists()) {
 			// of : 경로, size : 출력크기, outputFormat : 출력포멧(.png), toOutputStream : 출력
@@ -230,12 +236,16 @@ public class ProductController {
 			HttpServletRequest request, HttpServletResponse response) throws Exception {
 
 		OutputStream out = response.getOutputStream();
+<<<<<<< HEAD
 		String filePath2 = null; 
 		if(System.getProperty("os.name").toLowerCase().contains("win")) {			
 			filePath2 = PRODUCT_IMAGE_SERVER + "\\" + productNO + "\\" + imageFileName;
 		}else {
 			filePath2 = "/home/ubuntu/naeilhome-img/product_image/"+productNO+"/"+imageFileName;;			
 		}
+=======
+		String filePath2 = PRODUCT_IMAGE_SERVER + "\\" + productNO + "\\" + imageFileName;
+>>>>>>> 2eafbecfc2a83bfd92ac7d294cc658c427d9bf98
 		File image2 = new File(filePath2);
 
 		if (image2.exists()) {
@@ -252,12 +262,16 @@ public class ProductController {
 
 		OutputStream out = response.getOutputStream();
 		// PRODUCT_SELECT_IMAGE_SERVER 상수를 사용하여 파일 경로 구성
+<<<<<<< HEAD
 		String filePath = null;
 		if(System.getProperty("os.name").toLowerCase().contains("win")) {
 			filePath = PRODUCT_SELECT_IMAGE_SERVER + File.separator + productNO + File.separator + imageName;
 		}else {
 			filePath = "/home/ubuntu/naeilhome-img/product_select_image/"+productNO+"/"+imageName;
 		}
+=======
+		String filePath = PRODUCT_SELECT_IMAGE_SERVER + File.separator + productNO + File.separator + imageName;
+>>>>>>> 2eafbecfc2a83bfd92ac7d294cc658c427d9bf98
 		File imageFile = new File(filePath);
 
 		if (imageFile.exists()) {
@@ -292,12 +306,16 @@ public class ProductController {
 
 	// 리뷰 번호에 맞는 이미지 파일명 - 박찬희
 	private String reviewImageName(int reviewNo) {
+<<<<<<< HEAD
 		File reviewFolder = null;
 		if(System.getProperty("os.name").toLowerCase().contains("win")) {
 			reviewFolder = new File(REVIEW_IMAGE_SERVER, String.valueOf(reviewNo));			
 		}else {
 			reviewFolder = new File("/home/ubuntu/naeilhome-img/review_image/"+reviewNo);
 		}
+=======
+		File reviewFolder = new File(REVIEW_IMAGE_SERVER, String.valueOf(reviewNo));
+>>>>>>> 2eafbecfc2a83bfd92ac7d294cc658c427d9bf98
 		System.out.println("리뷰 이미지 파일 경로 = " + reviewFolder.getPath()); // 경로 확인
 
 		if (reviewFolder.exists() && reviewFolder.isDirectory()) {

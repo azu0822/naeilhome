@@ -115,11 +115,14 @@ public class QuestionController {
 
 				// 저장할 디렉토리 경로: C:\naeilhome\board\board_question
 				String uploadDir = "C:\\naeilhome\\board\\board_question";
+<<<<<<< HEAD
 				if(System.getProperty("os.name").toLowerCase().contains("win")) {
 					uploadDir = "C:\\naeilhome\\board\\board_question";					
 				}else {
 					uploadDir = "/home/ubuntu/naeilhome-img/board/board_question";										
 				}
+=======
+>>>>>>> 2eafbecfc2a83bfd92ac7d294cc658c427d9bf98
 				File dir = new File(uploadDir);
 				if (!dir.exists()) {
 					dir.mkdirs();
@@ -146,12 +149,16 @@ public class QuestionController {
 	@RequestMapping(value="/imageDisplay.do", method=RequestMethod.GET)
 	public void imageDisplay(@RequestParam("imageName") String imageName, HttpServletResponse response) {
 	    // 이미지 파일이 저장된 폴더 경로
+<<<<<<< HEAD
 	    String uploadDir = null;
 	    if(System.getProperty("os.name").toLowerCase().contains("win")) {
 	    	uploadDir = "C:\\naeilhome\\board\\board_question";	    	
 	    }else {
 	    	uploadDir = "/home/ubuntu/naeilhome-img/board/board_question";	    		    	
 	    }
+=======
+	    String uploadDir = "C:\\naeilhome\\board\\board_question";
+>>>>>>> 2eafbecfc2a83bfd92ac7d294cc658c427d9bf98
 	    File file = new File(uploadDir, imageName);
 	    
 	    if(file.exists()){

@@ -81,12 +81,16 @@ public class ReviewController {
 			@RequestParam(value = "orderNo") int orderNo, Model model, HttpSession session, HttpServletRequest request,
 			HttpServletResponse response) throws Exception {
 
+<<<<<<< HEAD
 		String imageFolderPath = null;
 		if(System.getProperty("os.name").toLowerCase().contains("win")) {
 			imageFolderPath = PRODUCT_IMAGE_SERVER + "\\" + productNo;			
 		}else {
 			imageFolderPath = "/home/ubuntu/naeilhome-img/product_image" + "/" + productNo;			
 		}
+=======
+		String imageFolderPath = PRODUCT_IMAGE_SERVER + "\\" + productNo;
+>>>>>>> 2eafbecfc2a83bfd92ac7d294cc658c427d9bf98
 		File imageFolder = new File(imageFolderPath);
 		// 상품이미지 파일명 찾는 방법
 		String productImageFileName = null;
@@ -156,9 +160,12 @@ public class ReviewController {
 		if (reviewImage != null && !reviewImage.isEmpty()) {
 			// 리뷰경로 + 리뷰번호 폴더생성
 			File reviewFolder = new File(REVIEW_IMAGE_SERVER, String.valueOf(reviewNo));
+<<<<<<< HEAD
 			if(!System.getProperty("os.name").toLowerCase().contains("win")) {
 				reviewFolder = new File("/home/ubuntu/naeilhome-img/review_image", String.valueOf(reviewNo));
 			}
+=======
+>>>>>>> 2eafbecfc2a83bfd92ac7d294cc658c427d9bf98
 			if (!reviewFolder.exists()) {
 				reviewFolder.mkdirs(); // 폴더가 없으면 생성
 			}
@@ -191,9 +198,12 @@ public class ReviewController {
 
 		OutputStream out = resp.getOutputStream();
 		String filePath = PRODUCT_IMAGE_SERVER + "\\" + productNo + "\\" + imageName;
+<<<<<<< HEAD
 		if(!System.getProperty("os.name").toLowerCase().contains("win")) {
 			filePath = "/home/ubuntu/naeilhome-img/review_image/" + productNo + "/" + imageName;
 		}
+=======
+>>>>>>> 2eafbecfc2a83bfd92ac7d294cc658c427d9bf98
 		File image = new File(filePath);
 
 		if (image.exists()) {
@@ -208,9 +218,12 @@ public class ReviewController {
 	// 리뷰번호에 맞는 이미지 파일명  - 박찬희
 	private String reviewImageName(int reviewNo) {
 		File reviewFolder = new File(REVIEW_IMAGE_SERVER, String.valueOf(reviewNo));
+<<<<<<< HEAD
 		if(!System.getProperty("os.name").toLowerCase().contains("win")) {
 			reviewFolder = new File("/home/ubuntu/naeilhome-img/review_image", String.valueOf(reviewNo));			
 		}
+=======
+>>>>>>> 2eafbecfc2a83bfd92ac7d294cc658c427d9bf98
 		System.out.println("나 이미지파일명 찾는 컨트롤러인데 파일 경로야 = " + reviewFolder.getPath()); // 경로 확인
 
 		if (reviewFolder.exists() && reviewFolder.isDirectory()) {
@@ -232,9 +245,12 @@ public class ReviewController {
 
 		OutputStream out = resp.getOutputStream();
 		String filePath = REVIEW_IMAGE_SERVER + "\\" + reviewNo + "\\" + imageName;
+<<<<<<< HEAD
 		if(!System.getProperty("os.name").toLowerCase().contains("win")) {
 			filePath = "/home/ubuntu/naeilhome-img/review_image/" + reviewNo + "/" + imageName;			
 		}
+=======
+>>>>>>> 2eafbecfc2a83bfd92ac7d294cc658c427d9bf98
 		File image = new File(filePath);
 
 		if (image.exists()) {

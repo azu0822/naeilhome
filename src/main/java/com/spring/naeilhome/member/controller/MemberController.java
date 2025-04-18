@@ -258,12 +258,16 @@ public class MemberController {
 				fileCheck = false;
 			}
 			if (fileCheck) {
+<<<<<<< HEAD
 				File file = null;
 				if(System.getProperty("os.name").toLowerCase().contains("win")) {
 					file = new File("C:\\naeilhome\\memberProfileImage\\" + member.getMemberId() + "\\" + fileName);
 				}else {
 					file = new File("/home/ubuntu/naeilhome-img/memberProfileImage/" + member.getMemberId() + "/" + fileName);
 				}
+=======
+				File file = new File("C:\\naeilhome\\memberProfileImage\\" + member.getMemberId() + "\\" + fileName);
+>>>>>>> 2eafbecfc2a83bfd92ac7d294cc658c427d9bf98
 				InputStream in = multipartFile.getInputStream();
 				member.setMemberImage(fileName);
 				FileUtils.copyInputStreamToFile(in, file);
@@ -375,12 +379,16 @@ public class MemberController {
 			boolean deleteMyHomeCheck = false;
 
 			// 파일 삭제 // 커버파일삭제 추가 03.18
+<<<<<<< HEAD
 			String fileRoot = null;
 			if(System.getProperty("os.name").toLowerCase().contains("win")) {
 				fileRoot = "C:\\naeilhome\\memberProfileImage\\" + memberId + "\\";
 			}else {
 				fileRoot = "/home/ubuntu/naeilhome-img/memberProfileImage/" + memberId + "/";
 			}
+=======
+			String fileRoot = "C:\\naeilhome\\memberProfileImage\\" + memberId + "\\";
+>>>>>>> 2eafbecfc2a83bfd92ac7d294cc658c427d9bf98
 
 			File targetFile = new File(fileRoot);
 
@@ -478,12 +486,16 @@ public class MemberController {
 		JsonObject jsonObject = new JsonObject();
 
 // 	    String fileRoot = request.getSession().getServletContext().getRealPath("/resources/images/board/");  // 내부경로 저장
+<<<<<<< HEAD
 		String fileRoot = null;
 		if(System.getProperty("os.name").toLowerCase().contains("win")) {
 			fileRoot = "C:\\naeilhome\\memberProfileImage\\" + memberId + "\\"; // 외부 경로 저장
 		}else {
 			fileRoot = "/home/ubuntu/naeilhome-img/memberProfileImage/" + memberId + "/"; // 외부 경로 저장			
 		}
+=======
+		String fileRoot = "C:\\naeilhome\\memberProfileImage\\" + memberId + "\\"; // 외부 경로 저장
+>>>>>>> 2eafbecfc2a83bfd92ac7d294cc658c427d9bf98
 		String originalFileName = multipartFile.getOriginalFilename(); // 원래 파일명
 		System.out.println(originalFileName);
 		String extension = originalFileName.substring(originalFileName.lastIndexOf(".")); // 파일 확장자 확인
@@ -507,11 +519,15 @@ public class MemberController {
 // 	        jsonObject.addProperty("url", fileRoot + savedFileName); // contextroot + resources + 저장할 내부 폴더명
 			System.out.println(fileRoot + savedFileName);
 			System.out.println("떠라 제발 : " + memberId + savedFileName);
+<<<<<<< HEAD
 			if(System.getProperty("os.name").toLowerCase().contains("win")) {
 				jsonObject.addProperty("fileName", "\\" + memberId + "\\" + savedFileName); // 톰켓 서버.xml에서 경로 설정해줬기에 게시글				
 			}else {
 				jsonObject.addProperty("fileName", "/" + memberId + "/" + savedFileName); // 톰켓 서버.xml에서 경로 설정해줬기에 게시글				
 			}
+=======
+			jsonObject.addProperty("fileName", "\\" + memberId + "\\" + savedFileName); // 톰켓 서버.xml에서 경로 설정해줬기에 게시글
+>>>>>>> 2eafbecfc2a83bfd92ac7d294cc658c427d9bf98
 																						// 번호 폴더명과 파일명을 같이 넘겨야함.
 
 			jsonObject.addProperty("responseCode", "success");
@@ -565,12 +581,16 @@ public class MemberController {
 		try {
 			memberService.updateMember(memberDomain);
 
+<<<<<<< HEAD
 			String imageRoot = null;
 			if(System.getProperty("os.name").toLowerCase().contains("win")) {
 				imageRoot = "C:\\naeilhome\\memberProfileImage\\" + memberDomain.getMemberId() + "\\";
 			}else {				
 				imageRoot = "/home/ubuntu/naeilhome-img/memberProfileImage/" + memberDomain.getMemberId() + "/";
 			}
+=======
+			String imageRoot = "C:\\naeilhome\\memberProfileImage\\" + memberDomain.getMemberId() + "\\";
+>>>>>>> 2eafbecfc2a83bfd92ac7d294cc658c427d9bf98
 			
 			if (memberImage != "") {
 

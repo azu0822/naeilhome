@@ -53,12 +53,16 @@ public class CREController {
 		for(MultipartFile m : multipartFile) {
 			String fileName = m.getOriginalFilename();
 			if(!fileName.trim().isEmpty()) {
+<<<<<<< HEAD
 				File file = null;
 				if(System.getProperty("os.name").toLowerCase().contains("win")) {					
 					file = new File(CRE_IMAGE + "\\" + creCount + "\\" + fileName);
 				}else {
 					file = new File("/home/ubuntu/naeilhome-img/cre_image/" + creCount + "/" + fileName);
 				}
+=======
+				File file = new File(CRE_IMAGE + "\\" + creCount + "\\" + fileName);
+>>>>>>> 2eafbecfc2a83bfd92ac7d294cc658c427d9bf98
 				InputStream in = m.getInputStream();
 				FileUtils.copyInputStreamToFile(in, file);
 				fileHaveResult = true;

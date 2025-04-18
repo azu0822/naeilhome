@@ -85,12 +85,16 @@ public class MyhomeController {
 		System.out.println("이미지 폴더 명에 넣을 새글 번호 : " + Article);
 
 //	    String fileRoot = request.getSession().getServletContext().getRealPath("/resources/images/board/");  // 내부경로 저장
+<<<<<<< HEAD
 		String fileRoot = null;
 		if(System.getProperty("os.name").toLowerCase().contains("win")) {					
 			fileRoot = "C:\\naeilhome\\board\\board_myhome\\" + Article + "\\"; // 외부 경로 저장
 		}else {
 			fileRoot = "/home/ubuntu/naeilhome-img/board/board_myhome/"+Article+"/";
 		}
+=======
+		String fileRoot = "C:\\naeilhome\\board\\board_myhome\\" + Article + "\\"; // 외부 경로 저장
+>>>>>>> 2eafbecfc2a83bfd92ac7d294cc658c427d9bf98
 		String originalFileName = multipartFile.getOriginalFilename(); // 원래 파일명
 		System.out.println(originalFileName);
 		String extension = originalFileName.substring(originalFileName.lastIndexOf(".")); // 파일 확장자 확인
@@ -115,11 +119,15 @@ public class MyhomeController {
 //	        jsonObject.addProperty("url", fileRoot + savedFileName); // contextroot + resources + 저장할 내부 폴더명
 			System.out.println(fileRoot + savedFileName);
 			System.out.println("떠라 제발 : " + Article + savedFileName);
+<<<<<<< HEAD
 			if(System.getProperty("os.name").toLowerCase().contains("win")) {
 				jsonObject.addProperty("fileName", "\\" + Article + "\\" + savedFileName); // 톰켓 서버.xml에서 경로 설정해줬기에 게시글 번호				
 			}else {
 				jsonObject.addProperty("fileName", "/" + Article + "/" + savedFileName); // 톰켓 서버.xml에서 경로 설정해줬기에 게시글 번호								
 			}
+=======
+			jsonObject.addProperty("fileName", "\\" + Article + "\\" + savedFileName); // 톰켓 서버.xml에서 경로 설정해줬기에 게시글 번호
+>>>>>>> 2eafbecfc2a83bfd92ac7d294cc658c427d9bf98
 																						// 폴더명과 파일명을 같이 넘겨야함.
 
 			jsonObject.addProperty("responseCode", "success");
@@ -153,12 +161,16 @@ public class MyhomeController {
 		// 폴더 위치 확인 (콘솔용)
 		System.out.println("삭제할 이미지가 위치한 폴더 : " + Article);
 		// 이미지 파일 경로 (이미지 폴더와 글 번호 합침)
+<<<<<<< HEAD
 		String fileRoot = null;
 		if(System.getProperty("os.name").toLowerCase().contains("win")) {
 			fileRoot = "C:\\naeilhome\\board\\board_myhome\\" + Article + "\\";
 		}else {
 			fileRoot = "/home/ubuntu/naeilhome-img/board/board_myhome/" + Article + "/";
 		}
+=======
+		String fileRoot = "C:\\naeilhome\\board\\board_myhome\\" + Article + "\\";
+>>>>>>> 2eafbecfc2a83bfd92ac7d294cc658c427d9bf98
 		// fileName에서 폴더 경로 제거
 		fileName = Paths.get(fileName).getFileName().toString();
 		// 삭제할 파일 경로
@@ -260,6 +272,7 @@ public class MyhomeController {
 		myhomeDomain = myhomeService.selectMyHome(boardMyhomeArticleNo); // 게시글 조회
 
 		// 파일 저장 경로 두개로 수정 (게시글내용 , 커버이미지)
+<<<<<<< HEAD
 		String fileRoot = null; // 외부 경로
 		String coFileRoot = null;
 		if(System.getProperty("os.name").toLowerCase().contains("win")) {
@@ -271,6 +284,11 @@ public class MyhomeController {
 		}
 		
 		
+=======
+		String fileRoot = "C:\\naeilhome\\board\\board_myhome\\" + boardMyhomeArticleNo + "\\"; // 외부 경로
+		String coFileRoot = "C:\\naeilhome\\board\\board_myhome\\coverImage\\" + boardMyhomeArticleNo + "\\";
+
+>>>>>>> 2eafbecfc2a83bfd92ac7d294cc658c427d9bf98
 		// 위 경로로 파일 객체 생성
 		File saveFileDir = new File(fileRoot);
 		File saveFileDir2 = new File(coFileRoot);
@@ -286,11 +304,15 @@ public class MyhomeController {
 				System.out.println("사진 포함 여부 : " + Check);
 				// 만약 글내용에 포함되어 있지 않다면 해당 파일 삭제.
 				if (myhomeDomain.getBoardMyhomeContents().contains(saveFileName) == false) {
+<<<<<<< HEAD
 					if(System.getProperty("os.name").toLowerCase().contains("win")) {
 						fileRoot = "C:\\naeilhome\\board\\board_myhome\\" + newArticle + "\\" + saveFileName;						
 					}else {
 						fileRoot = "/home/ubuntu/naeilhome-img/board/board_myhome/" + newArticle + "/" + saveFileName;
 					}
+=======
+					fileRoot = "C:\\naeilhome\\board\\board_myhome\\" + newArticle + "\\" + saveFileName;
+>>>>>>> 2eafbecfc2a83bfd92ac7d294cc658c427d9bf98
 					saveFileDir = new File(fileRoot);
 					FileUtils.deleteQuietly(saveFileDir);
 				}
@@ -362,12 +384,16 @@ public class MyhomeController {
 			HttpServletRequest requ, HttpServletResponse resp) throws Exception {
 		OutputStream out = resp.getOutputStream();
 
+<<<<<<< HEAD
 		String filePath = null;
 		if(System.getProperty("os.name").toLowerCase().contains("win")) {
 			filePath = "C:\\naeilhome\\board\\board_myhome\\coverImage\\" + articleNo + "\\" + image;			
 		}else {
 			filePath = "/home/ubuntu/naeilhome-img/board/board_myhome/coverImage/" + articleNo + "/" + image;						
 		}
+=======
+		String filePath = "C:\\naeilhome\\board\\board_myhome\\coverImage\\" + articleNo + "\\" + image;
+>>>>>>> 2eafbecfc2a83bfd92ac7d294cc658c427d9bf98
 		File image1 = new File(filePath);
 
 		if (image1.exists()) {
@@ -452,6 +478,7 @@ public class MyhomeController {
 		boolean deleteMyHomeCheck = false;
 
 		// 파일 삭제 // 커버파일삭제 추가 03.18
+<<<<<<< HEAD
 		String fileRoot = null;
 		String coFileRoot = null;
 		if(System.getProperty("os.name").toLowerCase().contains("win")) {
@@ -461,6 +488,10 @@ public class MyhomeController {
 			fileRoot = "/home/ubuntu/naeilhome-img/board/board_myhome/" + boardMyhomeArticleNo; // 삭제 경로
 			coFileRoot = "/home/ubuntu/naeilhome-img/board/board_myhome/coverImage/" + boardMyhomeArticleNo;						
 		}
+=======
+		String fileRoot = "C:\\naeilhome\\board\\board_myhome\\" + boardMyhomeArticleNo; // 삭제 경로
+		String coFileRoot = "C:\\naeilhome\\board\\board_myhome\\coverImage\\" + boardMyhomeArticleNo;
+>>>>>>> 2eafbecfc2a83bfd92ac7d294cc658c427d9bf98
 
 		File targetFile = new File(fileRoot);
 		File coTargetFile = new File(coFileRoot);
@@ -568,6 +599,7 @@ public class MyhomeController {
 			// 폴더에 존재하지 않은 파일 삭제
 			int boardMyhomeArticleNo = myhomeDomain.getBoardMyhomeArticleNo();
 
+<<<<<<< HEAD
 			String fileRoot = null;
 			String coFileRoot = null;
 			if(System.getProperty("os.name").toLowerCase().contains("win")) {
@@ -578,6 +610,10 @@ public class MyhomeController {
 				coFileRoot = "/home/ubuntu/naeilhome-img/board/board_myhome/coverImage/" + boardMyhomeArticleNo + "/";						
 			}
 			
+=======
+			String fileRoot = "C:\\naeilhome\\board\\board_myhome\\" + boardMyhomeArticleNo + "\\"; // 외부 경로
+			String coFileRoot = "C:\\naeilhome\\board\\board_myhome\\coverImage\\" + boardMyhomeArticleNo + "\\";
+>>>>>>> 2eafbecfc2a83bfd92ac7d294cc658c427d9bf98
 
 			// 위 경로로 파일 객체 생성
 			File saveFileDir = new File(fileRoot);
@@ -597,11 +633,15 @@ public class MyhomeController {
 					System.out.println("사진 포함 여부 : " + Check);
 					// 만약 글내용에 포함되어 있지 않다면 해당 파일 삭제.
 					if (myhomeDomain.getBoardMyhomeContents().contains(saveFileName) == false) {
+<<<<<<< HEAD
 						if(System.getProperty("os.name").toLowerCase().contains("win")) {
 							fileRoot = "C:\\naeilhome\\board\\board_myhome\\" + boardMyhomeArticleNo + "\\" + saveFileName;							
 						}else {							
 							fileRoot = "/home/ubuntu/naeilhome-img/board/board_myhome/" + boardMyhomeArticleNo + "/" + saveFileName;							
 						}
+=======
+						fileRoot = "C:\\naeilhome\\board\\board_myhome\\" + boardMyhomeArticleNo + "\\" + saveFileName;
+>>>>>>> 2eafbecfc2a83bfd92ac7d294cc658c427d9bf98
 						saveFileDir = new File(fileRoot);
 						FileUtils.deleteQuietly(saveFileDir);
 					}

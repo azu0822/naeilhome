@@ -13,6 +13,7 @@ public class WebConfig implements WebMvcConfigurer {
         registry.addViewController("/").setViewName("redirect:/naeilhome/");
     }
     
+<<<<<<< HEAD
 	@Override
 	public void addResourceHandlers(ResourceHandlerRegistry registry) {
 		if (System.getProperty("os.name").toLowerCase().contains("win")) {
@@ -27,5 +28,14 @@ public class WebConfig implements WebMvcConfigurer {
 			.addResourceLocations("file:/home/ubuntu/naeilhome-img/board/board_myhome/");			
 		}
 	}
+=======
+    @Override
+    public void addResourceHandlers(ResourceHandlerRegistry registry) {
+        registry.addResourceHandler("/memberProfileImage/**")
+                .addResourceLocations("file:/C:/naeilhome/memberProfileImage/");
+        registry.addResourceHandler("/board_myhome/**")
+                .addResourceLocations("file:/C:/naeilhome/board/board_myhome/");
+    }
+>>>>>>> 2eafbecfc2a83bfd92ac7d294cc658c427d9bf98
 
 }

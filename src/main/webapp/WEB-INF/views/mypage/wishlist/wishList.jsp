@@ -107,7 +107,7 @@ width: 100%; /* 이미지의 너비를 100%로 설정 */
 transition: transform 0.3s ease; /* 변환 효과 설정 */
 border-radius: 5px;
 background-size:cover;
-height:200px;
+height:280px;
 }
 .prodImage:hover{
 transform: scale(0.95); /* 마우스 호버 시 10% 확대 */
@@ -167,6 +167,16 @@ cursor: pointer;
  margin-top:18px;
 }
 
+.viewName {
+  width: 275px;
+  display: inline-block;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  font-weight: bold;
+  margin: 7px auto 7px auto;
+}
+
 </style>
 </head>
 
@@ -187,7 +197,7 @@ function checkOpen(){
 	$("#edit2").css("display", "flex");
 	
 	// 박스 크기 늘이기
-	$(".prodList").css("height", "360px");
+	$(".prodList").css("height", "380px");
 };
 
 function checkCancel(){
@@ -294,7 +304,7 @@ function checkAll() {
   	<c:if test="${not empty productList}">
   	<div id="editContainer">
     <div id="edit2">
-    <p>전체 선택</p>
+    <p><b>전체 선택</b></p>
     <input id="checkAll" type="checkbox" oninput="checkAll()">
     </div>    
   	<div id="edit">
@@ -314,9 +324,9 @@ function checkAll() {
 				<div class="prodList">
 					<a href="/product/selectProduct.do?productNO=${productList.productNO }&productName=${productList.productName }">
 							<img class="prodImage" src="/product/productThumbnail.do?articleNO=${productList.productNO }&image=${productList.imageFileName }"/>
-							<p class="prod" style="margin-top:25px; font-size: 23px;">${productList.productName }</p>
+							<span class="viewName" style="font-weight: bold;">${productList.productName }</span><br>
 						<fmt:formatNumber  value="${productList.productPrice}" type="number" var="price" />
-							<p class="prod" style="font-size: 20px; font-weight: 600; color:#2F4F4F;">${price }원</p>	
+							<span style="display: inline-block; margin-bottom: 7px;">${price}원</span>
 					</a>
 					<!-- 편집 체크 박스 -->
                                 <div id="checkArea">

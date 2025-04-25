@@ -29,4 +29,11 @@ public class QuestionDAOImpl implements QuestionDAO {
 	public QuestionDomain selectQuestionByNo(int boardQuestionArticleNo) {
 		return sqlSession.selectOne("mapper.question.selectQuestionByNo", boardQuestionArticleNo);
 	}
+	
+	// 로그인한 사용자만 조회
+	@Override
+    public List<QuestionDomain> selectQuestionsByWriterId(String writerId) {
+        return sqlSession.selectList("mapper.question.selectQuestionsByWriterId", writerId);
+    }
+	
 }

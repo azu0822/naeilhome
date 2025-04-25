@@ -30,7 +30,7 @@ public class GoogleController {
 	@Value("${api.google.secret-key}")
 	private String CLIENT_SECRET;
 	
-    private final String REDIRECT_URI = "http://localhost:8080/google/callback.do";
+    private final String REDIRECT_URI = "http://www.naeilhome.kro.kr/google/callback.do";
 
     @Autowired
     private GoogleService googleService;

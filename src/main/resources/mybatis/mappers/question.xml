@@ -64,4 +64,20 @@
 	        WHERE boardQuestionArticleNo = #{boardQuestionArticleNo}
 	    ]]>
 	</select>
+	
+	<!-- 로그인 유저의 문의내역만 조회 -->
+	<select id="selectQuestionsByWriterId" resultMap="questionResult" parameterType="string">
+	  <![CDATA[
+	    SELECT boardQuestionArticleNo,
+	           boardQuestionType1,
+	           boardQuestionType2,
+	           boardQuestionContents,
+	           boardQuestionUpdated,
+	           boardQuestionStatement
+	    FROM boardQuestion
+	    WHERE writerId = #{writerId}
+	    ORDER BY boardQuestionUpdated DESC
+	  ]]>
+	</select>
+	
 </mapper>

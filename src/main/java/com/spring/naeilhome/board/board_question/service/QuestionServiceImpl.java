@@ -28,4 +28,10 @@ public class QuestionServiceImpl implements QuestionService {
 	public QuestionDomain getQuestionByNo(int boardQuestionArticleNo) {
 		return questionDAO.selectQuestionByNo(boardQuestionArticleNo);
 	}
+
+	// 로그인한 사용자만 조회
+	@Override
+	public List<QuestionDomain> getQuestionsByWriterId(String writerId) {
+		return questionDAO.selectQuestionsByWriterId(writerId);
+	}
 }

@@ -134,10 +134,16 @@ public class OrderController {
 			@RequestParam("productPriceList") List<Integer> productPriceList,
 			@RequestParam("orderQtyList") List<Integer> orderQtyList,
 			@RequestParam("orderProductOptionsList") List<String> orderProductOptionsList, // 옵션 추가
+			@RequestParam String zip1,
+			@RequestParam String zip2,
+			@RequestParam String zip3,
 			HttpSession session, Model model) {
 		System.out.println("completeOrder invoked, orderDomain: " + orderDomain);
-
+		
 		// 폼에서 전달된 상품 정보를 OrderDomain에 세팅
+		orderDomain.setOrderZip1(zip1);
+		orderDomain.setOrderZip2(zip2);
+		orderDomain.setOrderZip3(zip3);
 		orderDomain.setProductNoList(productNoList);
 		orderDomain.setProductPriceList(productPriceList);
 		orderDomain.setOrderQtyList(orderQtyList);

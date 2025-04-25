@@ -12,4 +12,7 @@ public interface QuestionService {
 	List<QuestionDomain> getAllQuestions();
 
 	QuestionDomain getQuestionByNo(int boardQuestionArticleNo);
+	
+	// 로그인한 사용자만 조회
+	List<QuestionDomain> getQuestionsByWriterId(String writerId);
 }

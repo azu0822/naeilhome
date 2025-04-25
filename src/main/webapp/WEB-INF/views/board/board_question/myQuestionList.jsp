@@ -71,7 +71,8 @@ font-weight:bold;
 } 
 
 .myQuestionForm_table { 
-width: 100%; 
+width: 80%; 
+margin: 0 auto;
 border-collapse: collapse; 
 }
 .myQuestionForm_th, myQuestionForm_td { 
@@ -126,6 +127,9 @@ background-color: #f9f9f9;
             </tr>
         </thead>
         <tbody>
+	        <c:if test="${empty questionList}">
+	    		<tr><td colspan="5" style="padding-top: 20px; font-size:20px;">작성된 문의가 없습니다.</td></tr>
+			</c:if>
             <c:forEach var="q" items="${questionList}">
                 <tr class="myQuestionForm_tr2">
                     <!-- 클릭 시 questionSelect.jsp로 boardQuestionArticleNo를 파라미터로 전송 -->

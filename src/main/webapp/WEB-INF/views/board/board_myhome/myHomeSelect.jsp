@@ -217,16 +217,26 @@ function replyList(section, pageNum) {
                 str += '<div style="margin-bottom: 10px; border-bottom: 1px solid rgba(0, 0, 0, 0.1); padding-left: ' + paddingLeft + 'px;">' +
                        '<div style="display: flex; justify-content: space-between; align-items: flex-start;">' +
                        '<div style="display: flex; align-items: center;">' +
-                       replyimage + 
-                       '<a style="display: flex; align-items: center;" id="yourPage" onclick="replyYourPage(\'' + reply.memberId + '\')">' + 
+                       replyimage;
+                       
+                if(reply.memberId != '탈퇴회원'){
+                str += '<a style="display: flex; align-items: center;" id="yourPage" onclick="replyYourPage(\'' + reply.memberId + '\')">' + 
                        '<img id="replyImage" src="' + replyImageUrl + replyImageName + '" style="width: 35px; height: 35px; border-radius: 50%; margin-bottom:5px;"/>' +
                        '&nbsp;' + // 이미지와 닉네임 사이에 공백 추가
                        '<span style="font-weight: bold;">' + memberNickname + '</span>' +
                        '<form id="replyYourPageForm" action="/mypage/myhome/yourPageMyHomeList.do" method="POST">' + 
                        '<input class="replyYourId" name="yourId" type="hidden" value=""/>' +
                        '</form>' +
-                       '</a>' +
-                       '&nbsp;' +
+                       '</a>';
+                        }
+                
+                 if(reply.memberId == '탈퇴회원'){
+                 str += '<img id="replyImage" src="/resources/image/mypage.png" style="width: 35px; height: 35px; border-radius: 50%; margin-bottom:5px;"/>' +
+                        '&nbsp;' + // 이미지와 닉네임 사이에 공백 추가
+                        '<span style="font-weight: bold;">탈퇴회원</span>';
+                       }
+                       
+                str += '&nbsp;' +
                        '<span style="font-weight: bold; font-size: 12px;">' + reply.replyUpdated + '</span>' +
                        '</div>';
 
@@ -1170,7 +1180,10 @@ background-color: #66CEFF;
                 <tr>
                 <td>
                 
-                <c:if test="${selectMyHome.memberImage==null}">
+                <c:if test="${selectMyHome.memberId=='탈퇴회원'}">
+                <img id="profileImage" src="/resources/image/mypage.png"/>
+                </c:if>
+                <c:if test="${selectMyHome.memberImage==null && selectMyHome.memberId!='탈퇴회원'}">
                 <a id="yourPage" onclick="yourPage()">
                 <img id="profileImage" src="/resources/image/mypage.png"/></a>
      			</c:if>
@@ -1184,19 +1197,20 @@ background-color: #66CEFF;
                 <td>
                 <c:choose>
         		<c:when test="${selectMyHome.memberNickName!=null}">
-        		<a id="yourPage" onclick="yourPage()">${selectMyHome.memberNickName}</a>
+        		<a id="yourPage" onclick="yourPage()"><b>${selectMyHome.memberNickName}</b></a>
         		<form id="yourPageForm" action="/mypage/myhome/yourPageMyHomeList.do" method="POST">
         		<input id="yourId" name="yourId" type="hidden" value="${selectMyHome.memberId}"/>
         		</form>
         		</c:when>
                 <c:otherwise>
-               	 탈퇴회원
+               	 <b>탈퇴회원</b>
                 </c:otherwise>
                 </c:choose>
                 </td>
                 
                 
                 <!-- 조건문 넣어서 팔로우 팔로잉 버튼 만들어야함. -->
+                <c:if test="${selectMyHome.memberId!='탈퇴회원'}">
                 <c:if test="${member.memberId != selectMyHome.memberId}">
                 <c:if test="${checkBoardFollow =='false' || checkBoardFollow == null}">
                 <td><button id="followButton" onclick="follow(this,event)">팔로우</button></td>
@@ -1205,6 +1219,7 @@ background-color: #66CEFF;
                 <td><button id="nofollowButton" onclick="follow(this,event)">팔로잉</button></td>
                 </c:if>
                 <input id="followId" type="hidden" name="followId" value="${selectMyHome.memberId}" />
+                </c:if>
                 </c:if>
                 </tr>
                 </table>
@@ -1478,7 +1493,7 @@ background-color: #66CEFF;
       {
         title: '홈페이지 바로가기',
         link: {
-          webUrl: 'http://localhost:8090/board/board_myhome/myHomeSelect.do?boardMyhomeArticleNo='+`${selectMyHome.boardMyhomeArticleNo}`,
+          webUrl: 'http://www.naeilhome.kro.kr/board/board_myhome/myHomeSelect.do?boardMyhomeArticleNo='+`${selectMyHome.boardMyhomeArticleNo}`,
         },
       },
     ],

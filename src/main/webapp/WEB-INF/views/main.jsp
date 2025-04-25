@@ -131,10 +131,6 @@ font-family: Arial, sans-serif;
     width: 100%;
 }
 
-.bestAndNew h2{
-	margin:10px;
-}
-
 .viewAll {
     position: absolute; /* 버튼을 절대 위치로 설정 */
     top: 3px;
@@ -184,6 +180,16 @@ height:224px;
 
 .prodImage:hover{
 transform: scale(0.95); /* 마우스 호버 시 10% 확대 */
+}
+
+.viewName {
+  width: 208px;
+  display: inline-block;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  font-weight: bold;
+  margin: 7px auto 7px auto;
 }
 
 </style>
@@ -496,11 +502,15 @@ updateDisplay(); */
         	<img class="prodImage" src="/product/productThumbnail.do?articleNO=${bestProducts.productNo}&image=${bestProducts.imageFileName}" width="400">
         </a>
         <!-- 제품 이름 -->
+        <div style="text-align: center;">
         <a href="/product/selectProduct.do?productNO=${bestProducts.productNo}&amp;productName=${bestProducts.productName}">
-        	<p style="font-weight: bold;">${bestProducts.productName}</p>
+        	<span class="viewName" style="font-weight: bold;">${bestProducts.productName}</span>
         </a>
+        </div>
         <!-- 제품 가격 -->
-        <p><fmt:formatNumber value="${bestProducts.productPrice}" type="number" pattern="#,##0" />원</p>
+         <div style="text-align: center;">
+        <span style="display: inline-block; margin-bottom: 7px; font-weight: bold;"><fmt:formatNumber value="${bestProducts.productPrice}" type="number" pattern="#,##0" />원</span>
+    	</div>
     	</div>
     </c:forEach>
     </div>
@@ -522,11 +532,15 @@ updateDisplay(); */
             	<img class="prodImage" src="/product/productThumbnail.do?articleNO=${product.productNo}&image=${product.imageFileName}" width="400">
             </a>
             <!-- 제품 이름 -->
+            <div style="text-align: center;">
             <a href="/product/selectProduct.do?productNO=${product.productNo}&amp;productName=${product.productName}">
-            	<p style="font-weight: bold;">${product.productName}</p>
+            	<span class="viewName" style="font-weight: bold;">${product.productName}</span>
             </a>
-            <!-- 제품 가격 -->            
-            <p><fmt:formatNumber value="${product.productPrice}" type="number" pattern="#,##0" />원</p>
+            </div>
+            <!-- 제품 가격 -->      
+             <div style="text-align: center;">      
+            <span style="display: inline-block; margin-bottom: 7px; font-weight: bold;"><fmt:formatNumber value="${product.productPrice}" type="number" pattern="#,##0" />원</span>
+            </div>
         </div>
 	</c:forEach>
     </div>
@@ -553,12 +567,15 @@ updateDisplay(); */
         		<img class="prodImage" src="/board/board_myhome/myHomeCoverImages.do?articleNo=${article.boardMyhomeArticleNo}&image=${article.imageFileName}">
             </a>
             <!-- 게시글 제목 -->
+             <div style="text-align: center;">
             <a href="/board/board_myhome/viewCount.do?boardMyhomeArticleNo=${article.boardMyhomeArticleNo}">
-            	<p><span style="font-weight: bold;">${article.boardMyhomeTitle}</span></p>
+            	<span class="viewName" style="font-weight: bold;">${article.boardMyhomeTitle}</span>
             </a>
+            </div>
             <!-- 게시글 좋아요, 조회수, 총 댓글수 -->
-            <p>👍🏻 ${article.boardMyhomeLikes} | 👀 ${article.boardMyhomeViews} | 💬${article.totalReply}</p>
-
+            <div style="text-align: center;">
+            <span style="display: inline-block; margin-bottom: 7px; ">👍🏻 ${article.boardMyhomeLikes} | 👀 ${article.boardMyhomeViews} | 💬${article.totalReply}</span>
+			</div>
         </div>
 	</c:forEach>
     </div>

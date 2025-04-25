@@ -58,8 +58,21 @@ public class QuestionController {
 
 	// 마이페이지 - 문의내역
 	@RequestMapping(value = "/myQuestionList.do", method = RequestMethod.GET)
-	public String myQuestionList(Model model) {
-		List<QuestionDomain> questionList = questionService.getAllQuestions();
+	public String myQuestionList(HttpServletRequest request, Model model) {
+
+		// 1) 세션에서 로그인된 회원 정보 확인
+		HttpSession session = request.getSession();
+		MemberDomain loginMember = (MemberDomain) session.getAttribute("member");
+		if (loginMember == null) {
+			// 비로그인 시 로그인 페이지로
+			return "redirect:/member/loginForm.do";
+		}
+
+		// 2) writerId를 이용해 해당 회원의 문의내역만 조회
+		String memberId = loginMember.getMemberId();
+		List<QuestionDomain> questionList = questionService.getQuestionsByWriterId(memberId);
+
+		// 3) 모델에 담아서 뷰로 전달
 		model.addAttribute("questionList", questionList);
 		return "/board/board_question/myQuestionList";
 	}
@@ -96,16 +109,16 @@ public class QuestionController {
 		if (question.getBoardQuestionType2() != null) {
 			question.setBoardQuestionType2(question.getBoardQuestionType2().replaceAll(",$", ""));
 		}
-		
+
 		// 세션에서 로그인된 회원의 memberId 가져오기
-        HttpSession session = request.getSession();
-        MemberDomain loginMember = (MemberDomain) session.getAttribute("member");
-        if (loginMember == null) {
-            model.addAttribute("error", "로그인이 필요합니다.");
-            return "redirect:/member/loginForm.do";
-        }
-        // 세션의 memberId를 writerId로 설정
-        question.setWriterId(loginMember.getMemberId());
+		HttpSession session = request.getSession();
+		MemberDomain loginMember = (MemberDomain) session.getAttribute("member");
+		if (loginMember == null) {
+			model.addAttribute("error", "로그인이 필요합니다.");
+			return "redirect:/member/loginForm.do";
+		}
+		// 세션의 memberId를 writerId로 설정
+		question.setWriterId(loginMember.getMemberId());
 
 		// 파일 업로드 처리
 		if (!uploadFile.isEmpty()) {
@@ -115,10 +128,10 @@ public class QuestionController {
 
 				// 저장할 디렉토리 경로: C:\naeilhome\board\board_question
 				String uploadDir = "C:\\naeilhome\\board\\board_question";
-				if(System.getProperty("os.name").toLowerCase().contains("win")) {
-					uploadDir = "C:\\naeilhome\\board\\board_question";					
-				}else {
-					uploadDir = "/home/ubuntu/naeilhome-img/board/board_question";										
+				if (System.getProperty("os.name").toLowerCase().contains("win")) {
+					uploadDir = "C:\\naeilhome\\board\\board_question";
+				} else {
+					uploadDir = "/home/ubuntu/naeilhome-img/board/board_question";
 				}
 				File dir = new File(uploadDir);
 				if (!dir.exists()) {
@@ -143,38 +156,37 @@ public class QuestionController {
 		return "redirect:/board/board_question/myQuestionList.do";
 	}
 
-	@RequestMapping(value="/imageDisplay.do", method=RequestMethod.GET)
+	@RequestMapping(value = "/imageDisplay.do", method = RequestMethod.GET)
 	public void imageDisplay(@RequestParam("imageName") String imageName, HttpServletResponse response) {
-	    // 이미지 파일이 저장된 폴더 경로
-	    String uploadDir = null;
-	    if(System.getProperty("os.name").toLowerCase().contains("win")) {
-	    	uploadDir = "C:\\naeilhome\\board\\board_question";	    	
-	    }else {
-	    	uploadDir = "/home/ubuntu/naeilhome-img/board/board_question";	    		    	
-	    }
-	    File file = new File(uploadDir, imageName);
-	    
-	    if(file.exists()){
-	        // 파일 확장자에 따른 MIME 타입 설정 (예: jpg, png, gif)
-	        String ext = imageName.substring(imageName.lastIndexOf('.') + 1).toLowerCase();
-	        String mimeType = "application/octet-stream";
-	        if("jpg".equals(ext) || "jpeg".equals(ext)) {
-	            mimeType = "image/jpeg";
-	        } else if("png".equals(ext)) {
-	            mimeType = "image/png";
-	        } else if("gif".equals(ext)) {
-	            mimeType = "image/gif";
-	        }
-	        response.setContentType(mimeType);
-	        
-	        try(FileInputStream in = new FileInputStream(file);
-	            OutputStream out = response.getOutputStream()) {
-	            // Apache Commons IO를 사용하여 파일 내용을 복사합니다.
-	            IOUtils.copy(in, out);
-	        } catch(Exception e) {
-	            e.printStackTrace();
-	        }
-	    }
+		// 이미지 파일이 저장된 폴더 경로
+		String uploadDir = null;
+		if (System.getProperty("os.name").toLowerCase().contains("win")) {
+			uploadDir = "C:\\naeilhome\\board\\board_question";
+		} else {
+			uploadDir = "/home/ubuntu/naeilhome-img/board/board_question";
+		}
+		File file = new File(uploadDir, imageName);
+
+		if (file.exists()) {
+			// 파일 확장자에 따른 MIME 타입 설정 (예: jpg, png, gif)
+			String ext = imageName.substring(imageName.lastIndexOf('.') + 1).toLowerCase();
+			String mimeType = "application/octet-stream";
+			if ("jpg".equals(ext) || "jpeg".equals(ext)) {
+				mimeType = "image/jpeg";
+			} else if ("png".equals(ext)) {
+				mimeType = "image/png";
+			} else if ("gif".equals(ext)) {
+				mimeType = "image/gif";
+			}
+			response.setContentType(mimeType);
+
+			try (FileInputStream in = new FileInputStream(file); OutputStream out = response.getOutputStream()) {
+				// Apache Commons IO를 사용하여 파일 내용을 복사합니다.
+				IOUtils.copy(in, out);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
 	}
 
 }

@@ -1376,7 +1376,7 @@ function moveBottom(){
       {
         title: '홈페이지 바로가기',
         link: {
-          webUrl: 'http://localhost:8090/product/selectProduct.do?productNO='+`${productDomain.productNO}`+'&productName='+`${productDomain.productName}`,
+          webUrl: 'http://www.naeilhome.kro.kr/product/selectProduct.do?productNO='+`${productDomain.productNO}`+'&productName='+`${productDomain.productName}`,
         },
       },
     ],

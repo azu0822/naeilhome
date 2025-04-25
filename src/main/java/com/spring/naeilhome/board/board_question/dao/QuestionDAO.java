@@ -12,5 +12,8 @@ public interface QuestionDAO {
 
 	// 기존 메서드와 함께
 	QuestionDomain selectQuestionByNo(int boardQuestionArticleNo);
+	
+	// 로그인한 사용자만 조회
+	List<QuestionDomain> selectQuestionsByWriterId(String writerId);
 
 }

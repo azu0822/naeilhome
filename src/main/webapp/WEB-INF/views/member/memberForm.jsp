@@ -22,6 +22,7 @@ document.addEventListener("DOMContentLoaded", function () {
 	resultMember = ${resultMember};
 	if(resultMember != ''){
 		if(${resultMember}){
+			
 			result = "true";
 			InputMemberIdStatusCheck = true;
 			InputMemberIdStatusCheck2 = true;
@@ -52,7 +53,6 @@ document.addEventListener("DOMContentLoaded", function () {
 			$('.at').hide();
 			$('#inputPwd').hide();
 			$('#chk_pwd').hide();
-			
 			$(".snsNav").hide();
 		}
 	}
@@ -379,6 +379,8 @@ function addMember(event) {
 
 	if(resultMember){
 		InputEmail1StatusCheck = true;
+		birthCheck1 = true;
+		birthCheck2 = true;
 	}
     // 조건을 만족하는지 체크
     if (InputMemberIdStatusCheck && InputMemberNameStatusCheck
@@ -679,7 +681,7 @@ a {
 	font-size: 20px;
 }
 #memberZip1{
-	width:73.2%;
+	width:75.2%;
 	height:45px;
 	border: 1px solid #ccc;
 	border-radius: 5px;

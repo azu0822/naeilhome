@@ -1,7 +1,8 @@
 ![메인 페이지 미리보기](./images/메인페이지.jpg)
 
 # 🏠 내일의 집 (Naeilhome)
-[📄 이력서 보러가기](https://verbena-gerbil-44e.notion.site/1e32d31c7a6d807183c1d9b99589a8cb?pvs=4)  
+[📄 이력서 보러가기](https://verbena-gerbil-44e.notion.site/1e32d31c7a6d807183c1d9b99589a8cb?pvs=4)
+<br/>
 [📘 프로젝트 상세 보기](https://verbena-gerbil-44e.notion.site/Web-Project-1f12d31c7a6d801a9435e86ea3fe80fc?pvs=4)
 
 <br/>

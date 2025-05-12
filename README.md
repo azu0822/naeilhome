@@ -1,5 +1,6 @@
 # 내일의 집(Naeilhome)
 [📄 프로젝트 상세 문서 (노션 링크 바로가기)](https://verbena-gerbil-44e.notion.site/1e32d31c7a6d807183c1d9b99589a8cb?pvs=4)
+[![Notion](https://img.shields.io/badge/Notion-프로젝트_상세_보기-blue)](https://verbena-gerbil-44e.notion.site/1e32d31c7a6d807183c1d9b99589a8cb?pvs=4)
 
 ## 프로젝트 개요
 - **구매자 중심의 쇼핑몰과 커뮤니티가 결합된 웹 애플리케이션 개발 프로젝트**

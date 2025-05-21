@@ -1378,9 +1378,9 @@ background-color: #66CEFF;
             <input type="submit" value="수정" class="button">
         </form>
         <!-- 삭제 버튼 -->
-        <form action="/board/board_myhome/myHomeDelete.do" method="post" id="deleteForm">
-   			 <input type="hidden" name="boardMyhomeArticleNo" value="${selectMyHome.boardMyhomeArticleNo}" />
-   			 <input type="submit" value="삭제" class="deleteButton" id="myHomeDeleteForm" onclick="myHomeDelete(event)">
+       <form action="/board/board_myhome/myHomeDelete.do" method="post" id="myHomeDeleteForm">
+    		<input type="hidden" name="boardMyhomeArticleNo" value="${selectMyHome.boardMyhomeArticleNo}" />
+   			<input type="submit" value="삭제" class="deleteButton" onclick="myHomeDelete(event)">
 		</form>
     </c:if>
     
